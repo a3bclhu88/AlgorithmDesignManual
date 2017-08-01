@@ -6,18 +6,20 @@ public class KBalanceTree {
 	KBalanceTree rightchild;
 	KBalanceTree parent;
 	
-	public KBalanceTree(){
-		;
+	public KBalanceTree(int number){
+		value=number;
 	}
 	
 	public void insert(KBalanceTree root, int number,KBalanceTree ancestor){
-		if(root == null){
-			root = new KBalanceTree();
-			root.value = number;
+		if(root==null){
+			System.out.println("creating new node with value "+number );
+			root = new KBalanceTree(number);
 			root.parent = ancestor;
+			System.out.println("created new node with value "+number + " as child of node value " + root.parent.value );
 		}
 		else{
 			if(number > root.value){
+				
 				insert(root.rightchild,number,root);
 			}
 			else{
@@ -28,13 +30,13 @@ public class KBalanceTree {
 	
 	public void traverse(KBalanceTree root){
 		if(root == null){
-			;
+			
 		}
 		else{
-			System.out.println("value : " + root.value);
 			traverse(root.leftchild);
+			System.out.println("value : " + root.value);
 			traverse(root.rightchild);
 		}
-		return;
+		
 	}
 }

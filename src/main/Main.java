@@ -8,12 +8,12 @@ public class Main {
 		// TODO Auto-generated method stub
 		/*k balance tree*/
 		
-		KBalanceTree newtree = new KBalanceTree();
-		newtree.insert(newtree, 6, null);
-		newtree.insert(newtree, 1, null);
-		newtree.insert(newtree, 3, null);
-		
-		newtree.traverse(newtree);
+		BTree newtree = new BTree(6);
+		newtree.insertTree(7);
+		newtree.insertTree(2);
+		newtree.insertTree(5);
+		newtree.insertTree(8);
+		newtree.traverse();
 	}
 
 }
