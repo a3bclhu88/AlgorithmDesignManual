@@ -13,7 +13,13 @@ public class Main {
 		newtree.insertTree(2);
 		newtree.insertTree(5);
 		newtree.insertTree(8);
+		newtree.insertTree(10);
+		newtree.insertTree(9);
+		newtree.insertTree(1);
 		newtree.traverse();
+		newtree.check(3);
+		newtree.check(8);
+		newtree.deleteN(4);
 	}
 
 }
