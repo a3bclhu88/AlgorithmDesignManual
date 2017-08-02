@@ -76,4 +76,36 @@ public class KBalanceTree {
 			deleteN(root.rightchild,index,tree);
 		}
 	}
+	
+	public void deleteSingle(KBalanceTree root){
+		if(root==null){
+			System.out.println("the node to be deleted does not exist" );
+		}
+		else{
+			if(root.leftchild==null && root.rightchild==null){
+				if(root.parent==null){
+					root=null;
+					System.out.println("item deleted" );
+				}
+				else{
+					root=null;
+					System.out.println("item deleted" );
+				}
+			}
+			else if(root.leftchild==null && root.rightchild!=null){
+				KBalanceTree tmp = root.parent;
+				if(tmp.leftchild!=null && tmp.leftchild==root){
+					root.parent.leftchild=root.rightchild;
+					root.rightchild.parent=root.parent;
+					return;
+				}
+				if(){
+					
+				}
+			}
+			else if(root.leftchild!=null && root.rightchild==null){
+				root=root.leftchild;
+			}
+		}
+	}
 }
