@@ -72,6 +72,9 @@ public class KBalanceTree {
 		else{
 			deleteN(root.leftchild,index,tree);
 			System.out.println("item at position " + tree.counter + " is " + root.value);
+			if(index == tree.counter-1){
+				deleteSingle(root.rightchild);
+			}
 			tree.counter++;
 			deleteN(root.rightchild,index,tree);
 		}
@@ -99,12 +102,74 @@ public class KBalanceTree {
 					root.rightchild.parent=root.parent;
 					return;
 				}
-				if(){
-					
+				else if(tmp.rightchild==root && tmp.rightchild!=null){
+					root.parent.rightchild=root.rightchild;
+					root.rightchild.parent=root.parent;
+					return;
+				}
+				else{
+					return;
 				}
 			}
 			else if(root.leftchild!=null && root.rightchild==null){
-				root=root.leftchild;
+				KBalanceTree tmp = root.parent;
+				if(tmp.leftchild!=null && tmp.leftchild==root){
+					root.parent.leftchild=root.leftchild;
+					root.leftchild.parent=root.parent;
+					return;
+				}
+				else if(tmp.rightchild==root && tmp.rightchild!=null){
+					root.parent.rightchild=root.leftchild;
+					root.leftchild.parent=root.parent;
+					return;
+				}
+				else{
+					return;
+				}
+			}
+			else{
+				KBalanceTree tmp = root.parent;
+				if(tmp.leftchild!=null && tmp.leftchild==root){
+					if(root.leftchild.rightchild ==null){
+						if(root.rightchild.leftchild==null){
+							root=root.leftchild;
+							root.parent=tmp;
+							tmp.leftchild=root;
+						}
+						else{
+							root=root.rightchild.leftchild;
+							root.parent=tmp;
+							tmp.leftchild=root;
+						}
+					}
+					else{
+						root=root.leftchild.rightchild;
+						root.parent=tmp;
+						tmp.leftchild=root;
+					}
+				}
+				else if(tmp.rightchild==root && tmp.rightchild!=null){
+					if(root.leftchild.rightchild ==null){
+						if(root.rightchild.leftchild==null){
+							root=root.leftchild;
+							root.parent=tmp;
+							tmp.rightchild=root;
+						}
+						else{
+							root=root.rightchild.leftchild;
+							root.parent=tmp;
+							tmp.rightchild=root;
+						}
+					}
+					else{
+						root=root.leftchild.rightchild;
+						root.parent=tmp;
+						tmp.rightchild=root;
+					}
+				}
+				else{
+					return;
+				}
 			}
 		}
 	}

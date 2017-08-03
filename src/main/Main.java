@@ -16,10 +16,13 @@ public class Main {
 		newtree.insertTree(10);
 		newtree.insertTree(9);
 		newtree.insertTree(1);
+		newtree.insertTree(4);
+		newtree.insertTree(0);
 		newtree.traverse();
 		newtree.check(3);
 		newtree.check(8);
 		newtree.deleteN(4);
+		newtree.traverse();
 	}
 
 }
