@@ -21,7 +21,8 @@ public class Main {
 		newtree.traverse();
 		newtree.check(3);
 		newtree.check(8);
-		newtree.deleteN(4);
+		newtree.deleteN(3);
+		System.out.println("complexity is :  " + newtree.getcomplexity());
 		newtree.traverse();
 	}
 

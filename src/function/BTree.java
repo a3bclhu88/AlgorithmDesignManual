@@ -4,7 +4,11 @@ public class BTree {
 	KBalanceTree node;
 	boolean initialized;
 	int counter;
+	int complexity;
 	
+	public int getcomplexity(){
+		return this.complexity;
+	}
 	public void insertTree(int number){
 
 			node.insert(node, number, null,0);
@@ -15,6 +19,7 @@ public class BTree {
 	public BTree(int number){
 		node = new KBalanceTree(number);
 		counter=0;
+		complexity=0;
 	}
 	public void check(int number){
 		if(node==null){
