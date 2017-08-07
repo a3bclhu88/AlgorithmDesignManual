@@ -5,13 +5,16 @@ public class KBalanceTree {
 	KBalanceTree leftchild;
 	KBalanceTree rightchild;
 	KBalanceTree parent;
+	int leftChildDepth;
 	
 	public KBalanceTree(int number){
 		value=number;
+		leftChildDepth=1;
 	}
 	
 	public void insert(KBalanceTree root, int number,KBalanceTree ancestor, int direction){
 		if(root==null){
+			
 			System.out.println("creating new node with value "+number );
 			root = new KBalanceTree(number);
 			root.parent = ancestor;
@@ -32,6 +35,7 @@ public class KBalanceTree {
 				insert(root.rightchild,number,root,1);
 			}
 			else{
+				root.leftChildDepth++;
 				insert(root.leftchild,number,root, -1);
 			}
 		}
@@ -82,6 +86,24 @@ public class KBalanceTree {
 		}
 	}
 	
+	public void deleteK(KBalanceTree root, int k, BTree tree){
+		if(root==null){
+			return;
+		}
+		if(root.leftChildDepth == k){
+			tree.complexity++;
+			deleteSingle(root);
+		}
+		else if(root.leftChildDepth > k){
+			tree.complexity++;
+			deleteK(root.leftchild,k,tree);
+		}
+		else {
+			tree.complexity++;
+			deleteK(root.rightchild,k-root.leftChildDepth,tree);
+		}
+	}
+	
 	public void deleteSingle(KBalanceTree root){
 		int deletedValue;
 		if(root==null){
@@ -96,6 +118,7 @@ public class KBalanceTree {
 				}
 				else{
 					if(root.parent.leftchild==root){
+						root.parent.leftChildDepth--;
 						root.parent.leftchild=null;
 					}
 					if(root.parent.rightchild==root){
@@ -130,6 +153,7 @@ public class KBalanceTree {
 				KBalanceTree tmp = root.parent;
 				if(tmp.leftchild!=null && tmp.leftchild==root){
 					deletedValue=root.value;
+					root.parent.leftChildDepth--;
 					root.parent.leftchild=root.leftchild;
 					root.leftchild.parent=root.parent;
 					System.out.println("item " + deletedValue + " deleted scenario 3" );
@@ -156,6 +180,7 @@ public class KBalanceTree {
 							root=root.leftchild;
 							root.parent=tmp;
 							tmp.leftchild=root;
+							root.parent.leftChildDepth--;
 							System.out.println("item " + deletedValue + " deleted  scenario 4" );
 							return;
 						}
@@ -208,6 +233,21 @@ public class KBalanceTree {
 				else{
 					return;
 				}
+			}
+		}
+	}
+	
+	public KBalanceTree findMin(KBalanceTree root){
+		if(root==null){
+			System.out.println("element not found");
+			return null;
+		}
+		else{
+			if(root.leftchild==null){
+				return root;
+			}
+			else{
+				return findMin(root.leftchild);
 			}
 		}
 	}
