@@ -22,13 +22,16 @@ public class RangeStaticArray {
 	public void buildRangeTree(){
 		for(int i = 0;i<20;i++){
 			RangeTree newLeaf = new RangeTree(List[i]);
+			System.out.println( " [ " + i + " ] th " + " leaf node created with value " + " [ " + List[i] + " ]");
 			if(treeCount!=0){
-				minTree.insert(newLeaf);
-				
+				minTree.insert(newLeaf, i);
+				minTree.traverseLeafs();
 			}
-			else
+			else{
 				this.minTree=newLeaf;
-			
+				treeCount++;
+				System.out.println("first node created in the tree");
+			}
 		}
 	}
 	public void displayArray(){

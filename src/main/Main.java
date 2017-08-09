@@ -45,7 +45,9 @@ public class Main {
 		newBB.display();
 		System.out.println(newBB.getBinCount());*/
 		
-		
+		RangeStaticArray newArray = new RangeStaticArray();
+		newArray.displayArray();
+		newArray.buildRangeTree();
 	}
 
 }
