@@ -38,12 +38,14 @@ public class Main {
 		
 		BTree Merged = BTree.concatenateTree(newtree, newtree2);
 		Merged.traverse();*/
-		
+		/*find the smallest amout of buckets for a list of items	
 		BucketBin newBB = new BucketBin();
 		newBB.display();
 		newBB.fitsIn();
 		newBB.display();
-		System.out.println(newBB.getBinCount());
+		System.out.println(newBB.getBinCount());*/
+		
+		
 	}
 
 }
