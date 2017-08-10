@@ -48,6 +48,7 @@ public class Main {
 		RangeStaticArray newArray = new RangeStaticArray();
 		newArray.displayArray();
 		newArray.buildRangeTree();
+		newArray.searchMinRange(3, 3);
 	}
 
 }

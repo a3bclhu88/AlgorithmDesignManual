@@ -7,6 +7,7 @@ public class RangeStaticArray {
 	RangeTree minTree; 
 	int treeCount;
 	int complexity;
+	RangeTree entrance;
 	
 	public RangeStaticArray(){
 		complexity = 0;
@@ -24,15 +25,16 @@ public class RangeStaticArray {
 			RangeTree newLeaf = new RangeTree(List[i]);
 			System.out.println( " [ " + i + " ] th " + " leaf node created with value " + " [ " + List[i] + " ]");
 			if(treeCount!=0){
-				minTree.insert(newLeaf, i);
+				this.entrance=minTree.insert(newLeaf, i);
 				minTree.traverseLeafs();
 			}
 			else{
 				this.minTree=newLeaf;
+				this.entrance = newLeaf;
 				treeCount++;
 				System.out.println("first node created in the tree");
 			}
-		}
+		}	
 	}
 	public void displayArray(){
 		System.out.println("List of number in action: ");
@@ -40,5 +42,8 @@ public class RangeStaticArray {
 			System.out.print(List[i]+" , ");
 		}
 		System.out.println();
+	}
+	public void searchMinRange(int j, int k){
+		this.entrance.searchMinRange(j, k);
 	}
 }
