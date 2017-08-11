@@ -44,11 +44,21 @@ public class Main {
 		newBB.fitsIn();
 		newBB.display();
 		System.out.println(newBB.getBinCount());*/
-		
+		/*array range search on integers
 		RangeStaticArray newArray = new RangeStaticArray();
 		newArray.displayArray();
 		newArray.buildRangeTree();
-		newArray.searchMinRange(3, 3);
+		newArray.searchMinRange(3, 3);*/
+		
+		O1ArrayManip ArrayPair = new O1ArrayManip();
+		ArrayPair.insert(20);
+		ArrayPair.insert(11);
+		ArrayPair.insert(3);
+		ArrayPair.insert(7);
+		ArrayPair.insert(16);
+		ArrayPair.insert(23);
+		ArrayPair.delete(11);
+		ArrayPair.delete(3);
 	}
 
 }
