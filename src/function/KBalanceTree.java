@@ -11,7 +11,15 @@ public class KBalanceTree {
 		value=number;
 		leftChildDepth=1;
 	}
-	
+	public void traverseMin(){
+		System.out.println("value is : [ " + value + " ]");
+		if(rightchild == null){
+			return;
+		}
+		else{
+			rightchild.traverseMin();
+		}
+	}
 	public void insert(KBalanceTree root, int number,KBalanceTree ancestor, int direction){
 		if(root==null){
 			

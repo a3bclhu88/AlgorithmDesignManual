@@ -2,10 +2,32 @@ package function;
 
 public class BTree {
 	KBalanceTree node;
+	KBalanceTree min;
 	boolean initialized;
 	int counter;
 	int complexity;
 	
+	public KBalanceTree getRoot(){
+		return node;
+	}
+	
+	public void setMin(){
+		min = findMin(node);
+	}
+	
+	public KBalanceTree findMin(KBalanceTree node){
+		System.out.println("looking into left tree min of [ " + node.value + " ]");
+		if(node.leftchild == null){
+			return node;
+		}
+		else{
+			return findMin(node.leftchild);
+		}
+	}
+	
+	public void traverseFromMin(){
+		min.traverseMin();
+	}
 	public int getcomplexity(){
 		return this.complexity;
 	}
@@ -26,6 +48,7 @@ public class BTree {
 		node = t;
 		counter=0;
 		complexity=0;
+		
 	}
 	public void check(int number){
 		if(node==null){

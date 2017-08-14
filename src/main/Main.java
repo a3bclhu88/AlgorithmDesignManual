@@ -49,7 +49,8 @@ public class Main {
 		newArray.displayArray();
 		newArray.buildRangeTree();
 		newArray.searchMinRange(3, 3);*/
-		
+		/*Array O1 delete and insert*/
+		/*
 		O1ArrayManip ArrayPair = new O1ArrayManip();
 		ArrayPair.insert(20);
 		ArrayPair.insert(11);
@@ -58,7 +59,22 @@ public class Main {
 		ArrayPair.insert(16);
 		ArrayPair.insert(23);
 		ArrayPair.delete(11);
-		ArrayPair.delete(3);
+		ArrayPair.delete(3);*/
+		BTree newtree = new BTree(6);
+		newtree.insertTree(7);
+		newtree.insertTree(2);
+		newtree.insertTree(5);
+		newtree.insertTree(8);
+		newtree.insertTree(10);
+		newtree.insertTree(9);
+		newtree.insertTree(1);
+		newtree.insertTree(4);
+		newtree.insertTree(0);
+		newtree.traverse();
+		newtree.setMin();
+		TreeToLinkList TK = new TreeToLinkList(newtree);
+		TK.toList(newtree.getRoot());
+		newtree.traverseFromMin();
 	}
 
 }
