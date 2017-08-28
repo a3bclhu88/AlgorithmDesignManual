@@ -84,6 +84,7 @@ public class Main {
 		Hash.mapToDictionary();
 		Hash.display();*/
 		/*heap sort basic*/
+		/*
 		HeapSort sort= new HeapSort();
 		sort.insert(7);
 		sort.insert(9);
@@ -93,7 +94,12 @@ public class Main {
 		sort.insert(5);
 		sort.display();
 		sort.popMin(0);
-		sort.popMin(0);sort.popMin(0);sort.popMin(0);sort.popMin(0);sort.popMin(0);
+		sort.popMin(0);sort.popMin(0);sort.popMin(0);sort.popMin(0);sort.popMin(0);*/
+		/*N2N job */
+		MaxMinDiff nnb = new MaxMinDiff();
+		nnb.display();
+		nnb.sort();
+		nnb.display();
 	}
 
 }
