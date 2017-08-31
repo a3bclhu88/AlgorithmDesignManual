@@ -14,6 +14,7 @@ public class MergeNList {
 	
 	int[] buffer;
 	int[] result;
+	int bufferIndex;
 	
 	int l1p;
 	int l2p;
@@ -24,13 +25,13 @@ public class MergeNList {
 	int l7p;
 	
 	public MergeNList(){
-		list1 = new int[10];
-		list2 = new int[10];
-		list3 = new int[10];
-		list4 = new int[10];
-		list5 = new int[10];
-		list6 = new int[10];
-		list7 = new int[10];
+		list1 = new int[11];
+		list2 = new int[11];
+		list3 = new int[11];
+		list4 = new int[11];
+		list5 = new int[11];
+		list6 = new int[11];
+		list7 = new int[11];
 		buffer = new int[7];
 		result = new int[70];
 		
@@ -42,6 +43,8 @@ public class MergeNList {
 		l6p = 0;
 		l7p = 0;
 		
+		bufferIndex = 6;
+		
 		Random rdm = new Random();
 		list1[0] = 3;
 		list2[0] = 1;
@@ -50,6 +53,13 @@ public class MergeNList {
 		list5[0] = 6;
 		list6[0] = 0;
 		list7[0] = 3;
+		list1[10] = 999;
+		list2[10] = 999;
+		list3[10] = 999;
+		list4[10] = 999;
+		list5[10] = 999;
+		list6[10] = 999;
+		list7[10] = 999;
 		for(int i = 1;i<10;i++){
 			list1[i] = list1[i-1] + rdm.nextInt(6);
 			list2[i] = list2[i-1] + rdm.nextInt(5);
@@ -59,19 +69,27 @@ public class MergeNList {
 			list6[i] = list6[i-1] + rdm.nextInt(9);
 			list7[i] = list7[i-1] + rdm.nextInt(6);
 		}
+		for(int i = 0; i < 7; i++){
+			buffer[i] = -1;
+		}
+		this.display();
 	}
 	
 	public void sort(){
 		int index;
 		for(int i = 0;i<7;i++){
-			push(i);
+			 push( i+1);
 		}
-		
+		this.displayBuffer();
 		for(int i = 0; i<70;i++){
 			index = pop();
 			result[i] = arr(index)[arp(index)];
-			arpPlus(index);
-			push(index);
+			this.displayBuffer();
+			System.out.println("new value added as [ " + (index+1) + " ] list item [ " + arp(index) +  " ] position");
+			if(arp(index) < 10){
+				arpPlus(index);
+				push(index);
+			}
 		}
 	}
 	public void push(int n){
@@ -92,45 +110,71 @@ public class MergeNList {
 		case 4:return list4;
 		case 5:return list5;
 		case 6:return list6;
+		case 7:return list7;
 		}
 		return buffer;
 	}
 	void bubbleup(int n){
+		System.out.print("Bubble up position : [ " + n+ " ] ");
+		this.displayBuffer();
 		if(n<=0){
-			return;
+				return;
 		}
 		else{
-			if(arr(buffer[n])[arp(n)]< arr(buffer[(n+1)/2-1])[arp((n+1)/2-1)]){
+			if(buffer[(n+1)/2-1] ==-1){
+				System.out.println("Scenario 0");
 				swap(buffer,n,(n+1)/2-1);
 				bubbleup((n+1)/2-1);
 			}
-			if(n<3 && arr(buffer[n])[arp(n)] > arr(buffer[n*2+1])[arp(n*2+1)]){
-				bubbledown(n);
-			}
-			if(n<3 && arr(buffer[n])[arp(n)] > arr(buffer[n*2+2])[arp(n*2+2)]){
-				bubbledown(n);
-			}
 			else{
-				return;
+				if(arr(buffer[n])[arp(n)]< arr(buffer[(n+1)/2-1])[arp((n+1)/2-1)]){
+					System.out.println("Scenario 1");
+					swap(buffer,n,(n+1)/2-1);
+					bubbleup((n+1)/2-1);
+				}
+				if(n<3 && arr(buffer[n])[arp(n)] > arr(buffer[n*2+1])[arp(n*2+1)]){
+					System.out.println("Scenario 2");
+					bubbledown(n);
+				}
+				if(n<3 && arr(buffer[n])[arp(n)] > arr(buffer[n*2+2])[arp(n*2+2)]){
+					System.out.println("Scenario 3");
+					bubbledown(n);
+				}
+				else{
+					System.out.println("Scenario Match");
+					return;
+				}
 			}
+			
 		}
 	}
 	void bubbledown(int n){
+		System.out.print("Bubble down position : [ " + n+ " ] ");
+		this.displayBuffer();
 		if(n>6){
 			return;
 		}
-		if(arr(buffer[n])[arp(n)]< arr(buffer[(n+1)/2-1])[arp((n+1)/2-1)]){
-			bubbleup(n);
+		if(buffer[n*2+1] ==-1 || buffer[n*2+2] == -1){
+			return;
+		}
+		if(n>0){
+			if(arr(buffer[n])[arp(n)]< arr(buffer[(n+1)/2-1])[arp((n+1)/2-1)]){
+				System.out.println("Scenario -0");
+				bubbleup(n);
+			}
 		}
 		if(n<3 && arr(buffer[n])[arp(n)] > arr(buffer[n*2+1])[arp(n*2+1)]){
+			System.out.println("Scenario -1");
 			swap(buffer,n,n*2+1);
 			bubbledown(n*2+1);
 		}
 		if(n<3 && arr(buffer[n])[arp(n)] > arr(buffer[n*2+2])[arp(n*2+2)]){
+			System.out.println("Scenario -2");
 			swap(buffer,n,n*2+2);
 			bubbledown(n*2+2);
 		}
 		else{
+			System.out.println("Scenario -3");
 			return;
 		}
 	}
@@ -140,8 +184,23 @@ public class MergeNList {
 		array[j] = tmp;
 	}
 	public void display(){
-		
+		for(int j = 0;j<7;j++){
+			System.out.println("content of list " + (j+1)+ " : ");
+			for(int i = 0;i<11;i++){
+				System.out.print(arr(j+1)[i]+" , ");
+			}
+			System.out.println("");
+		}
 	}
+	
+	public void displayBuffer(){
+		System.out.println("content of buffer: ");
+		for(int i = 0;i< 7; i++){
+			System.out.print(buffer[i]+ " , ");
+		}
+		System.out.println("");
+	}
+	
 	int arp(int n){
 		switch(n){
 		case 1:return l1p;
