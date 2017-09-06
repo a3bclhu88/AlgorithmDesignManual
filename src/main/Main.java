@@ -96,10 +96,14 @@ public class Main {
 		sort.popMin(0);
 		sort.popMin(0);sort.popMin(0);sort.popMin(0);sort.popMin(0);sort.popMin(0);*/
 		/*N2N job */
-		MaxMinDiff nnb = new MaxMinDiff();
+		/*MaxMinDiff nnb = new MaxMinDiff();
 		nnb.display();
 		nnb.sort();
-		nnb.display();
+		nnb.display();*/
+		/*k item sum in a list*/
+		/*KSUMList KSL = new KSUMList();*/
+		TournamentHeap TH = new TournamentHeap();
+		
 	}
 
 }
