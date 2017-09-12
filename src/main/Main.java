@@ -102,8 +102,10 @@ public class Main {
 		nnb.display();*/
 		/*k item sum in a list*/
 		/*KSUMList KSL = new KSUMList();*/
-		TournamentHeap TH = new TournamentHeap();
-		
+		/*tornament sort*/
+		/*TournamentHeap TH = new TournamentHeap();*/
+		/*shift array sort*/
+		MatrixMissing MM = new MatrixMissing();
 	}
 
 }
