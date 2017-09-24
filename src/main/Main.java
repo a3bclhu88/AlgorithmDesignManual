@@ -105,7 +105,12 @@ public class Main {
 		/*tornament sort*/
 		/*TournamentHeap TH = new TournamentHeap();*/
 		/*shift array sort*/
-		MatrixMissing MM = new MatrixMissing();
+		/*MatrixMissing MM = new MatrixMissing();*/
+		/*BFS */
+		/*BFS bfs = new BFS("6;4\n2;3;5\n5\n6;1\n0\n2;1\n0;3");*/
+		
+		stringfriend sf = new stringfriend();
+		
 	}
 
 }
