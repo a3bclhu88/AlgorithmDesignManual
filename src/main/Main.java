@@ -109,7 +109,7 @@ public class Main {
 		/*BFS */
 		/*BFS bfs = new BFS("6;4\n2;3;5\n5\n6;1\n0\n2;1\n0;3");*/
 		
-		GrapghList GL = new GrapghList();
+		minVertexCoverage CV = new minVertexCoverage();
 		
 	}
 
