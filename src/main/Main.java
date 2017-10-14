@@ -108,9 +108,10 @@ public class Main {
 		/*MatrixMissing MM = new MatrixMissing();*/
 		/*BFS */
 		/*BFS bfs = new BFS("6;4\n2;3;5\n5\n6;1\n0\n2;1\n0;3");*/
-		
-		minVertexCoverage CV = new minVertexCoverage();
-		
+		/*calculate radius of a tree*/
+		/*minVertexCoverage CV = new minVertexCoverage();*/
+		/*radius of tree*/
+		GenericTree GT = new GenericTree();
 	}
 
 }

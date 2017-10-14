@@ -141,4 +141,7 @@ public class minVertexCoverage {
 		System.out.println("item ["+r+"] processed");
 	}
 	 
+	void diameter (int r){
+
+	}
 }
